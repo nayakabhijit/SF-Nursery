@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Plant_Key__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>Normalised (trimmed, single-spaced, lower-case) Plant Name, set by PlantTrigger. Unique so that &quot;Golapa&quot; and &quot;golapa &quot; cannot both exist; also the External ID used to upsert plants and link purchases/sales during data import.</description>
+    <externalId>true</externalId>
+    <inlineHelpText>Set automatically from Plant Name (trimmed, lower-case). Used to prevent duplicate plants and for data import.</inlineHelpText>
+    <label>Plant Key</label>
+    <length>80</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

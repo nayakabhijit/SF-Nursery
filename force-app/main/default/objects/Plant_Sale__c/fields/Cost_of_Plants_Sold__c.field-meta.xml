@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cost_of_Plants_Sold__c</fullName>
+    <description>Quantity Sold x Unit Cost, set by PlantSaleTrigger. Stored (not a formula) so it can be rolled up to Plant. Excel: Daily Sell column I.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Cost of the plants sold in this sale (quantity x average cost at time of sale). Set automatically.</inlineHelpText>
+    <label>Cost of Plants Sold</label>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

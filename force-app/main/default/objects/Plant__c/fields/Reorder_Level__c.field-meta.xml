@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reorder_Level__c</fullName>
+    <defaultValue>5</defaultValue>
+    <description>When Stock Remaining falls to this number or below, Stock Status shows &quot;Low stock&quot;. Field history is tracked.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Stock level at or below which the plant is flagged as &quot;Low stock&quot;. Default 5.</inlineHelpText>
+    <label>Reorder Level</label>
+    <precision>10</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

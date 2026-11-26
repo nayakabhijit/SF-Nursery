@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Plant Sale Form</masterLabel>
+    <description>Multi-row New Plant Sale form: add several sales with the + button; each row shows the plant's Current Stock and Avg. Purchase Cost (read-only). All rows save together.</description>
+    <targets>
+        <target>lightning__RecordAction</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordAction">
+            <actionType>ScreenAction</actionType>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

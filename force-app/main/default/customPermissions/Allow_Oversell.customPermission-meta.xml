@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Lets the user save a Plant Sale larger than the stock on hand, and delete a Plant Purchase that would make stock negative. Records still show &quot;CHECK: oversold&quot;. Used for loading historical data and correcting mistakes.</description>
+    <isLicensed>false</isLicensed>
+    <label>Allow Oversell</label>
+</CustomPermission>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <content>Nursery_Home</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>standard-home</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#2E7D32</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Plant nursery stock inventory and sales. Replaces the Stock_Details.xlsx workbook.</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <label>Nursery Stock</label>
+    <navType>Standard</navType>
+    <tabs>standard-home</tabs>
+    <tabs>Plant__c</tabs>
+    <tabs>Plant_Purchase__c</tabs>
+    <tabs>Plant_Sale__c</tabs>
+    <tabs>Expense__c</tabs>
+    <tabs>Expense_Entry__c</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

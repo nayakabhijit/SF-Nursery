@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationVisibilities>
+        <application>Nursery_Stock</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <description>Base access for users on the Minimum Access - Salesforce profile: Lightning Experience, the Nursery Stock app and its reports/dashboards. Pair with Nursery Admin or Nursery Staff for object and field access.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Nursery Stock App Access</label>
+    <tabSettings>
+        <tab>Expense_Entry__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Expense__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Plant_Purchase__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Plant_Sale__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Plant__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>standard-Dashboard</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>standard-report</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>CreateCustomizeReports</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>LightningExperienceUser</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>RunReports</name>
+    </userPermissions>
+</PermissionSet>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Plant_Cannot_Change</fullName>
+    <active>true</active>
+    <description>The Plant on a sale cannot be changed after it is saved; delete the sale and re-enter it instead.</description>
+    <errorConditionFormula>AND(NOT(ISNEW()), ISCHANGED(Plant__c))</errorConditionFormula>
+    <errorDisplayField>Plant__c</errorDisplayField>
+    <errorMessage>The Plant cannot be changed after the sale is saved. Delete this sale and enter it again for the correct plant.</errorMessage>
+</ValidationRule>

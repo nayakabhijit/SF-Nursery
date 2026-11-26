@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Plant__c$Stock_Status__c</field>
+    </columns>
+    <columns>
+        <field>Plant__c$Reorder_Level__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Plant__c$Stock_Remaining__c</field>
+    </columns>
+    <description>Plants whose Stock Status is not &quot;In stock&quot; (Low stock, Out of stock or CHECK: oversold).</description>
+    <filter>
+        <criteriaItems>
+            <column>Plant__c$Stock_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>In stock</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Plant__c$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Low / Out of Stock</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Plants__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Plant__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

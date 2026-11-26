@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expense__c</fullName>
+    <description>Master-Detail to Expense (enables Total Spent and Last Entry Date roll-ups). Cannot be changed after save.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The expense this amount was spent on. Cannot be changed after saving - delete and re-enter instead.</inlineHelpText>
+    <label>Expense</label>
+    <referenceTo>Expense__c</referenceTo>
+    <relationshipLabel>Expense Entries</relationshipLabel>
+    <relationshipName>Expense_Entries</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>true</writeRequiresMasterRead>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expense_Date__c</fullName>
+    <defaultValue>TODAY()</defaultValue>
+    <description>Date the money was spent. For Monthly expenses any date in the month can be entered; it is saved as the 1st of that month.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Date of the expense. Defaults to today. For a Monthly expense pick any day in the month - it is saved as the 1st.</inlineHelpText>
+    <label>Expense Date</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Plant__c.Plant_Purchases__r$Name</field>
+    </columns>
+    <columns>
+        <field>Plant__c$Name</field>
+    </columns>
+    <columns>
+        <field>Plant__c.Plant_Purchases__r$Supplier__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Plant__c.Plant_Purchases__r$Quantity_Purchased__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Plant__c.Plant_Purchases__r$Purchase_Cost__c</field>
+    </columns>
+    <description>Plant Purchases by calendar month (all time): units bought and purchase amount. The grand total is the All-time Purchases KPI.</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>Plant__c.Plant_Purchases__r$Purchase_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Monthly Purchases</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Plants_with_Purchases__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Plant__c.Plant_Purchases__r$Purchase_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

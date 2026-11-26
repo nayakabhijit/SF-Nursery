@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Expense__c</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Expenses with their Expense Entries (one row per entry).</description>
+    <join>
+        <outerJoin>false</outerJoin>
+        <relationship>Expense_Entries__r</relationship>
+    </join>
+    <label>Expenses with Entries</label>
+    <sections>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>Expense__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Category__c</field>
+            <table>Expense__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Expense_Type__c</field>
+            <table>Expense__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Active__c</field>
+            <table>Expense__c</table>
+        </columns>
+        <masterLabel>Expenses</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>Expense__c.Expense_Entries__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Expense_Date__c</field>
+            <table>Expense__c.Expense_Entries__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Amount__c</field>
+            <table>Expense__c.Expense_Entries__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Notes__c</field>
+            <table>Expense__c.Expense_Entries__r</table>
+        </columns>
+        <masterLabel>Expense Entries</masterLabel>
+    </sections>
+</ReportType>

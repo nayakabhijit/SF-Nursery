@@ -1,0 +1,167 @@
+.sale-table td,
+.sale-table th {
+    vertical-align: top;
+}
+
+.sale-table td {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+/* Read-only cells line up with the text inside the inputs next to them. */
+.sale-table td.col-ro,
+.sale-table td.col-num {
+    padding-top: 0.6rem;
+}
+
+.col-num {
+    width: 2.5rem;
+}
+
+.col-date {
+    min-width: 10rem;
+}
+
+.col-plant {
+    min-width: 14rem;
+}
+
+.col-ro {
+    min-width: 7rem;
+    white-space: nowrap;
+}
+
+.col-qty {
+    min-width: 6.5rem;
+}
+
+.col-price {
+    min-width: 8rem;
+}
+
+.col-notes {
+    min-width: 12rem;
+}
+
+.col-action {
+    width: 2.5rem;
+    padding-top: 0.6rem;
+}
+
+.row-has-error td {
+    background-color: var(--slds-g-color-error-container-1, #fef1ee);
+}
+
+.row-error td {
+    border-top: 0;
+    background-color: var(--slds-g-color-error-container-1, #fef1ee);
+    padding-bottom: 0.5rem;
+}
+
+.totals-row td {
+    border-top: 2px solid var(--slds-g-color-border-1, #c9c9c9);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* ---------- Phone portrait: rotate hint + stacked cards ---------- */
+
+.rotate-hint {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    background-color: var(--slds-g-color-info-container-1, #eef4ff);
+}
+
+.rotate-hint__text {
+    flex: 1;
+}
+
+.sale-card {
+    padding: 0.75rem;
+    border: 1px solid var(--slds-g-color-border-1, #c9c9c9);
+    border-radius: 0.25rem;
+}
+
+.sale-card__header,
+.sale-card__total,
+.sale-card__grand-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sale-card__header {
+    margin-bottom: 0.25rem;
+}
+
+.sale-card__readonly,
+.sale-card__pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.sale-card__readonly {
+    margin: 0.5rem 0;
+}
+
+.sale-card__total {
+    margin-top: 0.5rem;
+}
+
+.sale-card__grand-total {
+    padding: 0.5rem 0.75rem;
+    border-top: 2px solid var(--slds-g-color-border-1, #c9c9c9);
+}
+
+/* ---------- Phone landscape / small tablet: compact table so all columns fit ---------- */
+
+@media (max-width: 1023px) {
+    .sale-table {
+        font-size: 0.8125rem;
+    }
+
+    .sale-table th .slds-truncate {
+        white-space: normal;
+    }
+
+    .sale-table td,
+    .sale-table th {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    .col-num {
+        width: 1.75rem;
+    }
+
+    .col-date {
+        min-width: 8.5rem;
+    }
+
+    .col-plant {
+        min-width: 10rem;
+    }
+
+    .col-ro {
+        min-width: 4.5rem;
+    }
+
+    .col-qty {
+        min-width: 4.5rem;
+    }
+
+    .col-price {
+        min-width: 6rem;
+    }
+
+    .col-notes {
+        min-width: 7rem;
+    }
+
+    .col-action {
+        width: 1.75rem;
+    }
+}

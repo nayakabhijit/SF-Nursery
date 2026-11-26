@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active</fullName>
+    <columns>NAME</columns>
+    <columns>Category__c</columns>
+    <columns>Expense_Type__c</columns>
+    <columns>Total_Spent__c</columns>
+    <columns>Last_Entry_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Active__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Active</label>
+</ListView>

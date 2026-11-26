@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionSubtype>ScreenAction</actionSubtype>
+    <description>Record a sale of this plant (Plant pre-filled, Sale Date defaults to today). Shows Current Stock and Avg. Purchase Cost read-only.</description>
+    <label>New Sale</label>
+    <lightningWebComponent>plantSaleForm</lightningWebComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningWebComponent</type>
+</QuickAction>

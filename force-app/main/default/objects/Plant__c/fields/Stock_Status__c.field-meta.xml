@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stock_Status__c</fullName>
+    <description>CHECK: oversold / Out of stock / Low stock / In stock, based on Stock Remaining and Reorder Level. Excel: Stock &amp; Sales column I (Low stock added).</description>
+    <externalId>false</externalId>
+    <formula>IF(Stock_Remaining__c &lt; 0, &quot;CHECK: oversold&quot;,
+IF(Stock_Remaining__c = 0, &quot;Out of stock&quot;,
+IF(Stock_Remaining__c &lt;= BLANKVALUE(Reorder_Level__c, 0), &quot;Low stock&quot;,
+&quot;In stock&quot;)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>In stock, Low stock (at or below Reorder Level), Out of stock, or CHECK: oversold (more sold than purchased).</inlineHelpText>
+    <label>Stock Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

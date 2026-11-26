@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sale_Date__c</fullName>
+    <defaultValue>TODAY()</defaultValue>
+    <description>Date of the sale. Excel: Daily Sell column A.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Date of sale. Defaults to today; cannot be more than 1 day in the future.</inlineHelpText>
+    <label>Sale Date</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

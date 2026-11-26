@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>New</actionName>
+        <comment>Custom New form: shows the plant&apos;s Current Stock and Avg. Purchase Cost once a plant is selected.</comment>
+        <content>plantSaleNewOverride</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>plantSaleNewOverride</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>Plant_Sale_Compact</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>One record per plant sale (stock out). Replaces the &quot;Daily Sell&quot; sheet (table DailyStockSales) of Stock_Details.xlsx.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Plant Sale</label>
+    <nameField>
+        <displayFormat>SAL-{000000}</displayFormat>
+        <label>Sale Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Plant Sales</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

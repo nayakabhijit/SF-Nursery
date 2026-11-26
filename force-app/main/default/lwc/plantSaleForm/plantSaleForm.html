@@ -1,0 +1,357 @@
+<template>
+    <!-- One layout for both modes: modal chrome for the quick action, card chrome for the New override. -->
+    <article class={containerClass}>
+        <template lwc:if={isQuickAction}>
+            <div class="slds-modal__header">
+                <h1 class="slds-modal__title slds-hyphenate">New Sale</h1>
+            </div>
+        </template>
+        <template lwc:else>
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <lightning-icon icon-name="custom:custom1" size="small"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">New Plant Sale</h2>
+                    </div>
+                </header>
+            </div>
+        </template>
+
+        <div class={bodyClass}>
+            <div class="slds-is-relative">
+                <template lwc:if={saving}>
+                    <lightning-spinner alternative-text="Saving" size="small"></lightning-spinner>
+                </template>
+
+                <template lwc:if={showRotateHint}>
+                    <div class="rotate-hint slds-m-bottom_small" role="status">
+                        <lightning-icon icon-name="utility:phone_landscape" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        <span class="rotate-hint__text">Turn your phone sideways to see all fields in one table.</span>
+                        <lightning-button-icon
+                            icon-name="utility:close"
+                            variant="bare"
+                            size="small"
+                            alternative-text="Dismiss"
+                            title="Dismiss"
+                            onclick={handleDismissRotateHint}
+                        ></lightning-button-icon>
+                    </div>
+                </template>
+
+                <!-- Phone in portrait: one card per sale with every field stacked. -->
+                <template lwc:if={isPortraitPhone}>
+                    <template for:each={rowsView} for:item="row">
+                        <div key={row.key} class="sale-card slds-m-bottom_small">
+                            <div class="sale-card__header">
+                                <span class="slds-text-title_bold">Sale {row.rowNumber}</span>
+                                <lightning-button-icon
+                                    icon-name="utility:delete"
+                                    variant="bare"
+                                    alternative-text={row.removeLabel}
+                                    title={row.removeLabel}
+                                    disabled={row.removeDisabled}
+                                    data-key={row.key}
+                                    onclick={handleRemoveRow}
+                                ></lightning-button-icon>
+                            </div>
+                            <template lwc:if={row.error}>
+                                <div class="slds-text-color_error slds-m-bottom_x-small" role="alert">{row.error}</div>
+                            </template>
+                            <lightning-input
+                                type="date"
+                                label="Sale Date"
+                                value={row.saleDate}
+                                max={maxDate}
+                                message-when-range-overflow="Sale Date cannot be in the future."
+                                required
+                                data-key={row.key}
+                                data-field="saleDate"
+                                onchange={handleFieldChange}
+                            ></lightning-input>
+                            <lightning-record-picker
+                                object-api-name="Plant__c"
+                                label="Plant"
+                                placeholder="Search plants..."
+                                value={row.plantId}
+                                disabled={isQuickAction}
+                                required
+                                data-key={row.key}
+                                onchange={handlePlantChange}
+                            ></lightning-record-picker>
+                            <div class="sale-card__readonly">
+                                <div>
+                                    <div class="slds-text-title">Current Stock</div>
+                                    <template lwc:if={row.plantLoaded}>
+                                        <lightning-formatted-number value={row.stock}></lightning-formatted-number>
+                                        <span class={row.stockClass}>&nbsp;{row.stockStatus}</span>
+                                    </template>
+                                    <template lwc:else>&mdash;</template>
+                                </div>
+                                <div>
+                                    <div class="slds-text-title">Avg. Purchase Cost</div>
+                                    <template lwc:if={row.plantLoaded}>
+                                        <lightning-formatted-number
+                                            value={row.avgCost}
+                                            format-style="currency"
+                                            currency-code={currencyCode}
+                                        ></lightning-formatted-number>
+                                    </template>
+                                    <template lwc:else>&mdash;</template>
+                                </div>
+                            </div>
+                            <div class="sale-card__pair">
+                                <div>
+                                    <lightning-input
+                                        type="number"
+                                        label="Qty Sold"
+                                        value={row.quantity}
+                                        min="1"
+                                        step="1"
+                                        message-when-range-underflow="Must be at least 1."
+                                        message-when-step-mismatch="Use whole numbers."
+                                        required
+                                        data-key={row.key}
+                                        data-field="quantity"
+                                        onchange={handleFieldChange}
+                                    ></lightning-input>
+                                    <template lwc:if={row.exceedsStock}>
+                                        <div class="slds-text-color_error slds-text-body_small">Exceeds stock</div>
+                                    </template>
+                                </div>
+                                <div>
+                                    <lightning-input
+                                        type="number"
+                                        label="Selling Price"
+                                        formatter="currency"
+                                        value={row.sellingPrice}
+                                        min="0"
+                                        step="0.01"
+                                        message-when-range-underflow="Price cannot be negative."
+                                        required
+                                        data-key={row.key}
+                                        data-field="sellingPrice"
+                                        onchange={handleFieldChange}
+                                    ></lightning-input>
+                                </div>
+                            </div>
+                            <lightning-input
+                                type="text"
+                                label="Notes"
+                                value={row.notes}
+                                max-length="2000"
+                                data-key={row.key}
+                                data-field="notes"
+                                onchange={handleFieldChange}
+                            ></lightning-input>
+                            <div class="sale-card__total">
+                                <span class="slds-text-title">Line Total</span>
+                                <lightning-formatted-number
+                                    value={row.lineTotal}
+                                    format-style="currency"
+                                    currency-code={currencyCode}
+                                ></lightning-formatted-number>
+                            </div>
+                        </div>
+                    </template>
+                    <div class="sale-card__grand-total slds-text-title_bold">
+                        <span>Total ({rowCountLabel}) &middot; Qty <lightning-formatted-number value={totalQuantity}></lightning-formatted-number></span>
+                        <lightning-formatted-number
+                            value={totalRevenue}
+                            format-style="currency"
+                            currency-code={currencyCode}
+                        ></lightning-formatted-number>
+                    </div>
+                </template>
+
+                <!-- Landscape / tablet / desktop: one row per sale. -->
+                <template lwc:else>
+                <div class="slds-scrollable_x">
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer sale-table" aria-label="Plant sales">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th scope="col" class="col-num"><div class="slds-truncate">#</div></th>
+                                <th scope="col" class="col-date"><div class="slds-truncate"><abbr class="slds-required" title="required">*</abbr>Sale Date</div></th>
+                                <th scope="col" class="col-plant"><div class="slds-truncate"><abbr class="slds-required" title="required">*</abbr>Plant</div></th>
+                                <th scope="col" class="col-ro slds-text-align_right"><div class="slds-truncate">Current Stock</div></th>
+                                <th scope="col" class="col-ro slds-text-align_right"><div class="slds-truncate">Avg. Purchase Cost</div></th>
+                                <th scope="col" class="col-qty"><div class="slds-truncate"><abbr class="slds-required" title="required">*</abbr>Qty Sold</div></th>
+                                <th scope="col" class="col-price"><div class="slds-truncate"><abbr class="slds-required" title="required">*</abbr>Selling Price</div></th>
+                                <th scope="col" class="col-ro slds-text-align_right"><div class="slds-truncate">Line Total</div></th>
+                                <th scope="col" class="col-notes"><div class="slds-truncate">Notes</div></th>
+                                <th scope="col" class="col-action"><span class="slds-assistive-text">Actions</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={rowsView} for:item="row">
+                                <tr key={row.key} class={row.rowClass}>
+                                    <td class="col-num">{row.rowNumber}</td>
+                                    <td class="col-date">
+                                        <lightning-input
+                                            type="date"
+                                            label="Sale Date"
+                                            variant="label-hidden"
+                                            value={row.saleDate}
+                                            max={maxDate}
+                                            message-when-range-overflow="Sale Date cannot be in the future."
+                                            required
+                                            data-key={row.key}
+                                            data-field="saleDate"
+                                            onchange={handleFieldChange}
+                                        ></lightning-input>
+                                    </td>
+                                    <td class="col-plant">
+                                        <lightning-record-picker
+                                            object-api-name="Plant__c"
+                                            label="Plant"
+                                            variant="label-hidden"
+                                            placeholder="Search plants..."
+                                            value={row.plantId}
+                                            disabled={isQuickAction}
+                                            required
+                                            data-key={row.key}
+                                            onchange={handlePlantChange}
+                                        ></lightning-record-picker>
+                                    </td>
+                                    <td class="col-ro slds-text-align_right">
+                                        <template lwc:if={row.plantLoaded}>
+                                            <lightning-formatted-number value={row.stock}></lightning-formatted-number>
+                                            <template lwc:if={row.stockStatus}>
+                                                <div class={row.stockClass}>{row.stockStatus}</div>
+                                            </template>
+                                        </template>
+                                        <template lwc:else>&mdash;</template>
+                                    </td>
+                                    <td class="col-ro slds-text-align_right">
+                                        <template lwc:if={row.plantLoaded}>
+                                            <lightning-formatted-number
+                                                value={row.avgCost}
+                                                format-style="currency"
+                                                currency-code={currencyCode}
+                                            ></lightning-formatted-number>
+                                        </template>
+                                        <template lwc:else>&mdash;</template>
+                                    </td>
+                                    <td class="col-qty">
+                                        <lightning-input
+                                            type="number"
+                                            label="Quantity Sold"
+                                            variant="label-hidden"
+                                            value={row.quantity}
+                                            min="1"
+                                            step="1"
+                                            message-when-range-underflow="Must be at least 1."
+                                            message-when-step-mismatch="Use whole numbers."
+                                            required
+                                            data-key={row.key}
+                                            data-field="quantity"
+                                            onchange={handleFieldChange}
+                                        ></lightning-input>
+                                        <template lwc:if={row.exceedsStock}>
+                                            <div class="slds-text-color_error slds-text-body_small">Exceeds stock</div>
+                                        </template>
+                                    </td>
+                                    <td class="col-price">
+                                        <lightning-input
+                                            type="number"
+                                            label="Selling Price"
+                                            variant="label-hidden"
+                                            formatter="currency"
+                                            value={row.sellingPrice}
+                                            min="0"
+                                            step="0.01"
+                                            message-when-range-underflow="Price cannot be negative."
+                                            required
+                                            data-key={row.key}
+                                            data-field="sellingPrice"
+                                            onchange={handleFieldChange}
+                                        ></lightning-input>
+                                    </td>
+                                    <td class="col-ro slds-text-align_right">
+                                        <lightning-formatted-number
+                                            value={row.lineTotal}
+                                            format-style="currency"
+                                            currency-code={currencyCode}
+                                        ></lightning-formatted-number>
+                                    </td>
+                                    <td class="col-notes">
+                                        <lightning-input
+                                            type="text"
+                                            label="Notes"
+                                            variant="label-hidden"
+                                            value={row.notes}
+                                            max-length="2000"
+                                            data-key={row.key}
+                                            data-field="notes"
+                                            onchange={handleFieldChange}
+                                        ></lightning-input>
+                                    </td>
+                                    <td class="col-action">
+                                        <lightning-button-icon
+                                            icon-name="utility:delete"
+                                            variant="bare"
+                                            alternative-text={row.removeLabel}
+                                            title={row.removeLabel}
+                                            disabled={row.removeDisabled}
+                                            data-key={row.key}
+                                            onclick={handleRemoveRow}
+                                        ></lightning-button-icon>
+                                    </td>
+                                </tr>
+                                <template lwc:if={row.error}>
+                                    <tr key={row.errorKey} class="row-error">
+                                        <td></td>
+                                        <td colspan="9" class="slds-text-color_error" role="alert">
+                                            <lightning-icon
+                                                icon-name="utility:error"
+                                                size="x-small"
+                                                variant="error"
+                                                class="slds-m-right_x-small"
+                                            ></lightning-icon>
+                                            Row {row.rowNumber}: {row.error}
+                                        </td>
+                                    </tr>
+                                </template>
+                            </template>
+                        </tbody>
+                        <tfoot>
+                            <tr class="totals-row">
+                                <td></td>
+                                <td colspan="4" class="slds-text-title_bold">Total ({rowCountLabel})</td>
+                                <td class="slds-text-title_bold">
+                                    <lightning-formatted-number value={totalQuantity}></lightning-formatted-number>
+                                </td>
+                                <td></td>
+                                <td class="slds-text-align_right slds-text-title_bold">
+                                    <lightning-formatted-number
+                                        value={totalRevenue}
+                                        format-style="currency"
+                                        currency-code={currencyCode}
+                                    ></lightning-formatted-number>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                </template>
+
+                <div class="slds-m-top_small">
+                    <lightning-button
+                        label="Add Sale"
+                        icon-name="utility:add"
+                        title="Add another sale row"
+                        onclick={handleAddRow}
+                        disabled={addDisabled}
+                    ></lightning-button>
+                </div>
+            </div>
+        </div>
+
+        <div class={footerClass}>
+            <lightning-button label="Cancel" onclick={handleCancel} class="slds-m-right_x-small"></lightning-button>
+            <lightning-button variant="brand" label={saveLabel} onclick={handleSave} disabled={saving}></lightning-button>
+        </div>
+    </article>
+</template>

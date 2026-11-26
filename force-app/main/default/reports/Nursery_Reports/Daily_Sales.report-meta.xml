@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Plant__c.Plant_Sales__r$Name</field>
+    </columns>
+    <columns>
+        <field>Plant__c$Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Plant__c.Plant_Sales__r$Sale_Revenue__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Plant__c.Plant_Sales__r$Quantity_Sold__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Plant__c.Plant_Sales__r$Cost_of_Plants_Sold__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Plant__c.Plant_Sales__r$Gross_Profit__c</field>
+    </columns>
+    <description>Plant Sales aggregated by day for the last 30 days: sales amount, units sold, cost of plants sold and gross profit. Days are sorted by sales amount, highest first.</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Plant__c.Plant_Sales__r$Sale_Date__c</field>
+        <sortByName>Plant__c.Plant_Sales__r$Sale_Revenue__c</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <name>Daily Sales</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Plants_with_Sales__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Plant__c.Plant_Sales__r$Sale_Date__c</dateColumn>
+        <interval>INTERVAL_LAST30</interval>
+    </timeFrameFilter>
+</Report>

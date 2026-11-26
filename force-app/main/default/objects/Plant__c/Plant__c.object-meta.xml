@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>Plant_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>Plant_Compact</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Plant / Item master. One record per unique plant; purchases and sales roll up here. Replaces the &quot;Stock &amp; Sales&quot; sheet of Stock_Details.xlsx.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
+    <label>Plant</label>
+    <nameField>
+        <label>Plant Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Plants</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Read</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

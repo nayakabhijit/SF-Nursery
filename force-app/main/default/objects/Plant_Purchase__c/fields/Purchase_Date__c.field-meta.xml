@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Purchase_Date__c</fullName>
+    <defaultValue>TODAY()</defaultValue>
+    <description>Date the plants were bought. Excel: Plant Purchases column A.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Date of purchase. Defaults to today; cannot be more than 1 day in the future.</inlineHelpText>
+    <label>Purchase Date</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

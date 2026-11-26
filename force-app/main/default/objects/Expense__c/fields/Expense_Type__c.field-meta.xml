@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expense_Type__c</fullName>
+    <description>How often this expense is recorded. Daily: any number of entries per day. Monthly: one entry per calendar month, saved against the 1st of the month (set by ExpenseEntryTriggerHandler).</description>
+    <inlineHelpText>Daily = entered day by day (tea, transport). Monthly = one amount per month (rent, salaries); only one entry per month is allowed.</inlineHelpText>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Daily</fullName>
+                <default>true</default>
+                <label>Daily</label>
+            </value>
+            <value>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+                <label>Monthly</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

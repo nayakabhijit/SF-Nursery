@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Lets the user see the Profit &amp; Loss summary (sales minus cost of plants sold minus expenses) on the Nursery Home page. Granted by Nursery Admin.</description>
+    <isLicensed>false</isLicensed>
+    <label>View Profit and Loss</label>
+</CustomPermission>

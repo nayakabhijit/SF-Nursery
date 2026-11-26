@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quantity_Sold__c</fullName>
+    <description>Number of units sold. Must be greater than 0 and not more than stock on hand (unless the user has Allow Oversell). Excel: Daily Sell column C.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Number of units sold (whole number, greater than 0, not more than current stock).</inlineHelpText>
+    <label>Quantity Sold</label>
+    <precision>10</precision>
+    <required>true</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

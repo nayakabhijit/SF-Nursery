@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Group xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Users of the Nursery Stock app. Grants view access to the Nursery Reports and Nursery Dashboards folders.</description>
+    <doesIncludeBosses>false</doesIncludeBosses>
+    <name>Nursery Stock Users</name>
+</Group>

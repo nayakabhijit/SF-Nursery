@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sold_Qty__c</fullName>
+    <description>Roll-up SUM of Plant Sale Quantity Sold. Excel: Stock &amp; Sales column C.</description>
+    <inlineHelpText>Total units ever sold for this plant.</inlineHelpText>
+    <label>Sold Qty</label>
+    <summarizedField>Plant_Sale__c.Quantity_Sold__c</summarizedField>
+    <summaryForeignKey>Plant_Sale__c.Plant__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

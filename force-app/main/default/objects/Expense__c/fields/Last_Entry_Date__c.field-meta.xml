@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Entry_Date__c</fullName>
+    <description>Roll-up MAX of Expense Entry Expense Date.</description>
+    <inlineHelpText>Date of the most recent entry for this expense.</inlineHelpText>
+    <label>Last Entry Date</label>
+    <summarizedField>Expense_Entry__c.Expense_Date__c</summarizedField>
+    <summaryForeignKey>Expense_Entry__c.Expense__c</summaryForeignKey>
+    <summaryOperation>max</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

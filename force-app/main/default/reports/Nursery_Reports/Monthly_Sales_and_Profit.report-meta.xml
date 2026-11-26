@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>IF(Plant_Sale__c.Sale_Revenue__c:SUM = 0, 0, Plant_Sale__c.Gross_Profit__c:SUM / Plant_Sale__c.Sale_Revenue__c:SUM)</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>Gross Profit / Sale Revenue</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Gross Margin %</masterLabel>
+        <scale>1</scale>
+    </aggregates>
+    <columns>
+        <field>Plant__c.Plant_Sales__r$Name</field>
+    </columns>
+    <columns>
+        <field>Plant__c$Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Plant__c.Plant_Sales__r$Quantity_Sold__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Plant__c.Plant_Sales__r$Sale_Revenue__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Plant__c.Plant_Sales__r$Cost_of_Plants_Sold__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Plant__c.Plant_Sales__r$Gross_Profit__c</field>
+    </columns>
+    <description>Plant Sales by calendar month for the current year: units sold, sales amount, cost of plants sold, gross profit and gross margin. Replaces the Monthly Dashboard sheet.</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>Plant__c.Plant_Sales__r$Sale_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Monthly Sales &amp; Profit</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Plants_with_Sales__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Plant__c.Plant_Sales__r$Sale_Date__c</dateColumn>
+        <interval>INTERVAL_CURY</interval>
+    </timeFrameFilter>
+</Report>

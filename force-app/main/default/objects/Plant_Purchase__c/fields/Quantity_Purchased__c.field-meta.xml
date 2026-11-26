@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quantity_Purchased__c</fullName>
+    <description>Number of units bought. Must be greater than 0. Excel: Plant Purchases column E.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Number of units bought (whole number, greater than 0).</inlineHelpText>
+    <label>Quantity Purchased</label>
+    <precision>10</precision>
+    <required>true</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>
